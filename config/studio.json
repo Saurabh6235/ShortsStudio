@@ -1,0 +1,58 @@
+{
+  "channel": "merit-mantra",
+
+  "use": {
+    "script_llm": ["gemini", "gemini_flash", "sarvam","openai","claude","openrouter","ollama"],
+    "research_llm": ["gemini_flash", "sarvam"],
+    "fact_check_llm": ["gemini", "gemini_flash", "sarvam"],
+    "director_llm": ["gemini", "gemini_flash"],
+    "review_llm": ["gemini_flash", "gemini"],
+    "voice": "sarvam",
+    "images": "stock",
+    "music": "kit",
+    "render": "local"
+  },
+
+  "pipeline": {
+    "research": true,
+    "script": "llm",
+    "fact_check": "fix",
+    "scene_planner": "ai",
+    "image_review": "ai"
+  },
+
+  "providers": {
+    "llm": {
+      "sarvam":     {"type": "openai_compatible", "base_url": "https://api.sarvam.ai/v1", "model": "sarvam-105b-conversations", "key_env": "SARVAM_API_KEY", "max_output_tokens": 4096, "vision": false},
+      "gemini":     {"type": "openai_compatible", "base_url": "https://generativelanguage.googleapis.com/v1beta/openai", "model": "gemini-3.5-flash", "key_env": "GEMINI_API_KEY", "max_output_tokens": 32000, "vision": true},
+      "gemini_flash": {"type": "openai_compatible", "base_url": "https://generativelanguage.googleapis.com/v1beta/openai", "model": "gemini-3.5-flash-lite", "key_env": "GEMINI_API_KEY", "max_output_tokens": 32000, "vision": true},
+      "gemini_pro": {"type": "openai_compatible", "base_url": "https://generativelanguage.googleapis.com/v1beta/openai", "model": "gemini-pro-latest", "key_env": "GEMINI_API_KEY", "max_output_tokens": 32000, "vision": true},
+      "gemini_cli": {"type": "cli", "command": ["gemini", "-p", "{prompt}"], "max_output_tokens": 32000, "vision": false, "timeout": 900},
+      "openai":     {"type": "openai_compatible", "base_url": "https://api.openai.com/v1", "model": "gpt-4.1", "key_env": "OPENAI_API_KEY", "max_output_tokens": 16000, "vision": true},
+      "claude":     {"type": "anthropic", "model": "claude-sonnet-5-5", "key_env": "ANTHROPIC_API_KEY", "max_output_tokens": 16000, "vision": true},
+      "openrouter": {"type": "openai_compatible", "base_url": "https://openrouter.ai/api/v1", "model": "google/gemini-2.5-pro", "key_env": "OPENROUTER_API_KEY", "max_output_tokens": 16000, "vision": true},
+      "ollama":     {"type": "openai_compatible", "base_url": "http://localhost:11434/v1", "model": "qwen2.5:7b", "key_env": "", "max_output_tokens": 4096, "vision": false},
+      "my_api":     {"type": "openai_compatible", "base_url": "https://my-server.example.com/v1", "model": "my-model", "key_env": "MY_LLM_KEY", "max_output_tokens": 8000, "vision": false}
+    },
+    "tts": {
+      "sarvam": {"type": "sarvam", "key_env": "SARVAM_API_KEY"},
+      "kokoro": {"type": "kokoro"}
+    },
+    "image": {
+      "stock":     {"type": "heygen_stock"},
+      "my_images": {"type": "local_folder", "folder": "my_images", "fallback": "stock"},
+      "gemini_ai": {"type": "gemini_image", "model": "gemini-3.1-flash-image", "key_env": "GEMINI_API_KEY",
+                    "style": "Photorealistic, cinematic lighting, vertical 9:16 composition, no text, no letters, no watermark."}
+    },
+    "music": {
+      "kit": {"type": "kit_library"}
+    },
+    "render": {
+      "local": {"type": "local", "quality": "delivery"},
+      "cloud": {"type": "heygen_cloud", "quality": "high", "resolution": "1080p"}
+    }
+  },
+
+  "retry": {"attempts": 3, "backoff_seconds": 10},
+  "export": {"folder": "export", "copy_to": ""}
+}

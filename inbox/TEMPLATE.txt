@@ -1,0 +1,7 @@
+Topic: 
+Title: 
+Hook: ""
+Hidden science: 
+Interesting fact: 
+
+# Several videos from one file: put a line with --- between topics.

@@ -1,0 +1,46 @@
+# ---------- secrets (never commit) ----------
+.env
+.env.*
+!config/.env.example
+*.key
+*.pem
+*credentials*.json
+*secret*
+token*.json
+
+# ---------- your content and generated output ----------
+# jobs/ = one working folder per video (scripts, voice lines, images, renders, logs); export/ = finished videos
+jobs/
+export/
+my_images/
+# your topic files, except the template
+inbox/*.txt
+!inbox/TEMPLATE.txt
+inbox/done/
+
+# ---------- media anywhere except the channel kits (music, SFX, end card, logo ship with each channel) ----------
+*.mp4
+*.mov
+*.webm
+*.wav
+*.mp3
+*.m4a
+!channels/*/kit/**
+# ...but stock music/SFX stay out of the public repo (licences may not allow redistribution) - each user adds their own
+channels/*/kit/audio/*.wav
+channels/*/kit/audio/*.mp3
+channels/*/kit/audio/*.m4a
+
+# ---------- tool caches ----------
+node_modules/
+__pycache__/
+*.py[cod]
+.hyperframes/
+.media/
+*.log
+*.f32
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/

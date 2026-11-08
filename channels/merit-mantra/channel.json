@@ -1,0 +1,31 @@
+{
+  "display_name": "Merit Mantra",
+  "hashtag": "#MeritMantra",
+  "file_prefix": "Merit-Mantra",
+  "kit": "kit",
+
+  "languages": [
+    {"code": "hi", "label": "Hinglish", "voice_text": "devanagari", "captions": "roman"},
+    {"code": "en", "label": "English", "voice_text": "latin", "captions": "latin"}
+  ],
+
+  "voices": {
+    "sarvam": {
+      "hi": {"speaker": "anand_hi_documentary", "language": "hi-IN", "pace": 1.2},
+      "en": {"speaker": "anand_en_documentary", "fallback_speakers": ["anand_hi_documentary", "anand"], "language": "en-IN", "pace": 1.15}
+    },
+    "kokoro": {
+      "hi": {"voice": "hm_omega", "speed": 1.15},
+      "en": {"voice": "am_michael", "speed": 1.1}
+    }
+  },
+
+  "cta": {
+    "hi": {"tts": "ऐसी ही कॉन्सेप्चुअल क्लैरिटी के लिए, सब्सक्राइब करें मेरिट मंत्रा।", "cap": ["aisi hi conceptual clarity ke liye", "subscribe karein merit mantra"]},
+    "en": {"tts": "For more conceptual clarity like this, subscribe to Merit Mantra.", "cap": ["for more conceptual clarity like this", "subscribe to merit mantra"]}
+  },
+
+  "prompts": {"script_brief": "prompts/script_brief.txt"},
+  "music": {"tension": "bgm_001", "build": "bgm_003", "uplift": "bgm_002"},
+  "format": {"width": 1080, "height": 1920, "fps": 30, "upload_size": [2160, 3840]}
+}
