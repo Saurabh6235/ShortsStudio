@@ -1,6 +1,6 @@
-# Channel audio kit (not included in the repository)
+# Channel audio kit
 
-Put these files in this folder. The `kit_library` music provider checks they exist before mixing:
+The music provider `kit_library` uses these files (included). To use your own music, replace them with files of the same names:
 
 | File | Role |
 |---|---|
@@ -19,4 +19,4 @@ The roles of the three music beds are set in `channel.json` under `"music"`.
 - the HyperFrames free catalog: `npx hyperframes media-use resolve --type bgm --intent "dark cinematic tension" --project .`, and `--type sfx` for the effects;
 - freesound.org (check each sound's licence).
 
-Note credits that a licence requires in `SFX_CREDITS.md`. The audio is not in the repository because stock licences often do not allow redistribution.
+Note credits that a licence requires in `SFX_CREDITS.md`. If you publish videos made with these sounds, follow each sound's licence (for example, CC BY needs a credit).

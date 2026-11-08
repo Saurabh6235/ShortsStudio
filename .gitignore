@@ -26,10 +26,6 @@ inbox/done/
 *.mp3
 *.m4a
 !channels/*/kit/**
-# ...but stock music/SFX stay out of the public repo (licences may not allow redistribution) - each user adds their own
-channels/*/kit/audio/*.wav
-channels/*/kit/audio/*.mp3
-channels/*/kit/audio/*.m4a
 
 # ---------- tool caches ----------
 node_modules/

@@ -56,7 +56,7 @@ You need **Windows 10/11** with **winget** (built into Windows 11; on Windows 10
    Then it:
    - opens a browser so you can **sign in to a free HeyGen account** (used only for free stock pictures);
    - asks for your **Sarvam API key** (get one at https://dashboard.sarvam.ai; new accounts get free credit) and saves it in `.env`.
-3. **Add the music kit.** The stock music and SFX are not in the repo; see [`channels/merit-mantra/kit/audio/README.md`](channels/merit-mantra/kit/audio/README.md) for the 8 files to drop in.
+3. **Music kit:** 3 music beds and 5 sound effects are included in `channels/merit-mantra/kit/audio/` ([what each is for](channels/merit-mantra/kit/audio/README.md)). Replace them with your own files of the same names if you like.
 4. *(Optional, recommended)* Add a free **Gemini API key** (https://aistudio.google.com/apikey) as a new line in `.env`:
    ```
    GEMINI_API_KEY=your-key
@@ -81,7 +81,7 @@ Use this if you prefer to install things yourself or are not on Windows. Command
 | 5 | Render browser (headless Chrome) | `npx --yes hyperframes@0.9.5 browser ensure` |
 | 6 | Free HeyGen sign-in (stock pictures) | `npx --yes hyperframes@0.9.5 auth login` |
 | 7 | API keys | Copy `config/.env.example` to `.env` (in the project root) and fill in `SARVAM_API_KEY=` (plus `GEMINI_API_KEY=` if you have one) |
-| 8 | Music kit | Put the 8 audio files in `channels/merit-mantra/kit/audio/` ([list](channels/merit-mantra/kit/audio/README.md)) |
+| 8 | Music kit | Included in `channels/merit-mantra/kit/audio/` ([list](channels/merit-mantra/kit/audio/README.md)); replace with your own files of the same names if you like |
 | 9 | Check | `py -3.12 -m studio check`. It should end with `All good.` |
 
 Verify the tools at any time:
@@ -250,7 +250,7 @@ The full reference is in [GUIDE.md](GUIDE.md).
 | `config/.env.example` | Template for `.env` (your API keys; `.env` is git-ignored) |
 | `channels/<name>/channel.json` | Channel profile: languages, voices, CTA ending, music roles, video format |
 | `channels/<name>/prompts/script_brief.txt` | The writing style every script follows |
-| `channels/<name>/kit/` | `brand/` (end card, logo) and `audio/` (music + SFX, add your own) |
+| `channels/<name>/kit/` | `brand/` (end card, logo) and `audio/` (3 music beds + 5 SFX) |
 | `inbox/TEMPLATE.txt` | Topic file format |
 | `setup/requirements.txt`, `package.json` | Python packages; pinned HyperFrames renderer |
 
@@ -296,7 +296,7 @@ The full reference is in [GUIDE.md](GUIDE.md).
 | `studio.json is not valid JSON (line N…)` | A missing comma or quote near that line |
 | `HTTP 401` / `403` / `404` / `429` | Wrong key / no access / wrong `base_url` or model name / quota (Gemini Pro needs billing; the Flash models work on the free tier) |
 | `HTTP 503 high demand` | Temporary: retried automatically, then the next model in the list is used |
-| `channel kit … is missing: bgm_001.wav …` | Add the music/SFX files ([list](channels/merit-mantra/kit/audio/README.md)) |
+| `channel kit … is missing: bgm_001.wav …` | A music/SFX file was deleted or renamed; restore it ([list](channels/merit-mantra/kit/audio/README.md)) |
 | `ACTION NEEDED: …` | The pipeline paused on purpose (manual script or review); do what it says, then build again |
 | A picture is wrong | Change its phrase in `jobs/<job>/script.json` → `images`, delete its line in `media/assets.json`, then run `build <job> --from images` |
 | Anything else | See `jobs/<job>/job.log`, fix the cause, then run `build <job>` again (finished stages are skipped) |
@@ -312,4 +312,4 @@ The full reference is in [GUIDE.md](GUIDE.md).
 
 ---
 
-**Credits and licences.** The rendering uses [HyperFrames](https://hyperframes.heygen.com) (HTML + GSAP → video), FFmpeg, Sarvam AI (voice) and optional LLM providers. The stock music and SFX are not included; use audio you are licensed to use, and keep its credits in `channels/<name>/kit/audio/SFX_CREDITS.md`. The Merit Mantra end card and logo in `channels/merit-mantra/kit/brand/` belong to the Merit Mantra channel. Replace them with your own brand when you create a new channel.
+**Credits and licences.** The rendering uses [HyperFrames](https://hyperframes.heygen.com) (HTML + GSAP → video), FFmpeg, Sarvam AI (voice) and optional LLM providers. The music and SFX in `channels/merit-mantra/kit/audio/` come from royalty-free stock sources; credits that a licence requires are in `SFX_CREDITS.md`. Follow each sound's licence when publishing. The Merit Mantra end card and logo in `channels/merit-mantra/kit/brand/` belong to the Merit Mantra channel. Replace them with your own brand when you create a new channel.
